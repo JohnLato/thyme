@@ -45,7 +45,7 @@ flag Werror
 
 library
     include-dirs: include
-    hs-source-dirs: src
+    hs-source-dirs: lens, src
     exposed-modules:
         Data.Thyme
         Data.Thyme.Calendar
@@ -63,13 +63,13 @@ library
         Data.Thyme.Time
         Data.Thyme.Time.Core
     other-modules:
+        Control.Lens
         Data.Micro
         Data.Thyme.Calendar.Internal
         Data.Thyme.Clock.Internal
         Data.Thyme.Format.Internal
         Data.Thyme.LocalTime.Internal
         Data.Thyme.LocalTime.TimeZone
-        Data.Thyme.TH
     build-depends:
         QuickCheck >= 2.4,
         attoparsec >= 0.10,
@@ -78,11 +78,10 @@ library
         bytestring >= 0.9,
         containers,
         deepseq >= 1.2,
-        lens >= 3.9,
         mtl >= 1.1,
         old-locale >= 1.0,
+        profunctors >= 3.1.2,
         random,
-        template-haskell >= 2.6,
         text >= 0.11,
         time >= 1.4,
         vector >= 0.9,
@@ -99,16 +98,17 @@ library
 
 test-suite sanity
     type: exitcode-stdio-1.0
-    hs-source-dirs: tests
+    hs-source-dirs: lens, tests
     main-is: sanity.hs
-    other-modules: Common
+    other-modules: Common, Control.Lens
     build-depends:
         QuickCheck,
         attoparsec,
         base,
         bytestring,
-        lens,
         old-locale,
+        mtl,
+        profunctors,
         text,
         thyme,
         time,
@@ -143,16 +143,16 @@ test-suite hlint
 
 benchmark bench
     type: exitcode-stdio-1.0
-    hs-source-dirs: tests
+    hs-source-dirs: lens, tests
     main-is: bench.hs
-    other-modules: Common
+    other-modules: Common, Control.Lens
     build-depends:
         QuickCheck,
         base,
         criterion,
-        lens,
         mtl,
         old-locale,
+        profunctors,
         random,
         thyme,
         time,
