@@ -20,6 +20,9 @@ deps()
 
 $APT install $(deps "$@")
 $APT install happy alex
+
+ghc-pkg list
+
 # $CABAL_INSTALL_DEPS --avoid-reinstalls "$@" # Install the rest via Hackage
 $CABAL_INSTALL_DEPS --avoid-reinstalls profunctors
 
