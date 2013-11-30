@@ -12,5 +12,5 @@ script:
   - cabal bench || true
 
 env:
-  - mode="-fWerror -fHLint --enable-tests --enable-benchmarks -O2"
+  - mode="-fWerror --enable-tests --enable-benchmarks -O2"
 
