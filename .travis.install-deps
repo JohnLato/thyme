@@ -19,7 +19,7 @@ deps()
 }
 
 $APT install $(deps "$@")
-$CABAL_INSTALL_DEPS "$@" # Install the rest via Hackage
+$CABAL_INSTALL_DEPS --avoid-reinstalls "$@" # Install the rest via Hackage
 
 if ! $APT install hlint ; then
 	$APT install $(deps hlint)
